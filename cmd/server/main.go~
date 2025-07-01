@@ -17,7 +17,7 @@ func main() {
 		panic(fmt.Sprintf("Failed to start server: reason- %v", err.Error()))
 	}
 	db.AutoMigrate(&model.Todo{})
-	dal := dal.NewDal(db)
+	dal := dal.NewDal()
 	service := service.NewService(dal)
 	handler := handler.NewHandler(service)
 	server := router.NewRouter(handler)
